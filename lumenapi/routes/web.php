@@ -21,12 +21,12 @@ $router->get('/', function () use ($router) {
 });
 
 $router->group(['prefix' => 'auth'], function () use ($router) {
-    $router->post('/register', ['uses'=> 'MahasiswaController@register']);
-    $router->post('/login', ['uses'=> 'MahasiswaController@login']);
-});
+    $router->post('/register', ['uses'=> 'AuthController@register']);
+    $router->post('/login', ['uses'=> 'AuthController@login']); // route login
+    });
 
-$router->get('/mahasiswa', 'MahasiswaController@getMahasiswa');
+    $router->get('/mahasiswa', 'MahasiswaController@getMahasiswa');
 
-$router->group(['middleware' => 'auth'], function () use ($router) {
-    $router->get('/mahasiswa/profile', 'MahasiswaController@getMahasiswaByToken');
-});
+    $router->group(['middleware' => 'auth'], function () use ($router) {
+        $router->get('/mahasiswa/profile', 'MahasiswaController@getMahasiswaByToken');
+    });
