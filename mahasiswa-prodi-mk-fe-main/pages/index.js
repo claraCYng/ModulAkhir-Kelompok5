@@ -93,7 +93,6 @@ export default function Home() {
                 <Th>NIM</Th>
                 <Th>Nama</Th>
                 <Th>Angkatan</Th>
-                <Th>Prodi</Th>
                 <Th>Action</Th>
               </Tr>
             </Thead>
@@ -104,7 +103,6 @@ export default function Home() {
                   <Td>{mahasiswa.nim}</Td>
                   <Td>{mahasiswa.nama}</Td>
                   <Td>{mahasiswa.angkatan}</Td>
-                  <Td>{mahasiswa.prodi.nama}</Td>
                   <Td>
                     <Button size="sm" colorScheme="green" onClick={() => {router.push(`/users/${mahasiswa.nim}`)}}>
                       Detail

@@ -20,12 +20,12 @@ const Navbar = ({ user, handleLogout }) => {
     <Box px={10}>
       <Flex my={5} h={16} alignItems="center" justifyContent="space-between">
         <Heading as="h2" size="md">
-          Mahasiswa Prodi Mata Kuliah
+          Mahasiswa
         </Heading>
 
         <Stack spacing={8} alignItems="center">
           <Heading as="h3" size="lg">
-            Expert
+            Easy
           </Heading>
         </Stack>
 

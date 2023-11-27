@@ -30,8 +30,7 @@ const Register = () => {
   const [password, setPassword] = useState("");
   const [nama, setNama] = useState("");
   const [angkatan, setAngkatan] = useState("");
-  const [prodi, setProdi] = useState("");
-  const [prodiList, setProdiList] = useState([]);
+
 
   const router = useRouter();
 
@@ -49,15 +48,6 @@ const Register = () => {
     }
   };
 
-  const getProdi = async () => {
-    try {
-      const res = await backend.get("/prodi");
-
-      setProdiList(res.data.prodi);
-    } catch (error) {
-      console.log(error);
-    }
-  }
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -65,7 +55,6 @@ const Register = () => {
       nim,
       nama,
       angkatan,
-      prodiId: prodi,
       password,
     }
 
@@ -73,9 +62,6 @@ const Register = () => {
     router.push('/login');
   };
 
-  useEffect(() => {
-    getProdi();
-  }, [])
 
   return (
     <Flex
@@ -125,20 +111,7 @@ const Register = () => {
                   ></Input>
                 </InputGroup>
               </FormControl>
-              <FormControl>
-                <InputGroup>
-                  <Select
-                    placeholder="Prodi"
-                    icon={<MdArrowDropDown />}
-                    value={prodi}
-                    onChange={(e) => setProdi(e.target.value)}
-                  >
-                    { prodiList && prodiList.map((prodiItem) => {
-                      return <option value={prodiItem.id} key={prodiItem.id}>{prodiItem.nama}</option>
-                    }) }
-                  </Select>
-                </InputGroup>
-              </FormControl>
+
               <FormControl>
                 <InputGroup>
                   <Select
