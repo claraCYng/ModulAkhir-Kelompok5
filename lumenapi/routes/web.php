@@ -14,10 +14,19 @@ use Illuminate\Support\Str; // import library Str
 |
 */
 
+//Clara Clarita Yung - 215150700111051
+
 $router->get('/', function () use ($router) {
     return $router->app->version();
 });
 
-$router->get('/key', function () {
-    return Str::random(20);
+$router->group(['prefix' => 'auth'], function () use ($router) {
+    $router->post('/register', ['uses'=> 'MahasiswaController@register']);
+    $router->post('/login', ['uses'=> 'MahasiswaController@login']);
+});
+
+$router->get('/mahasiswa', 'MahasiswaController@getMahasiswa');
+
+$router->group(['middleware' => 'auth'], function () use ($router) {
+    $router->get('/mahasiswa/profile', 'MahasiswaController@getMahasiswaByToken');
 });
